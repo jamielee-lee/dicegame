@@ -17,7 +17,6 @@ class Player:
         self.die2 = 0
 
         self.roundWins = 0
-        self.gameWins = 0
 
     # integration between player and die
     def rollDice(self):

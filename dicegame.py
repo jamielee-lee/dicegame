@@ -22,7 +22,7 @@ def main():
 
     playerChoice = 0
     
-    while (playerChoice != 1 | playerChoice != 3):
+    while (playerChoice != 3):
         playerChoice = int(input("1: Start Game\n2: Rules\n3: Quit\n"))
 
         if (playerChoice == 2):
@@ -30,33 +30,53 @@ def main():
             try:
                 with open(filePath, 'r') as file:
                     fileContent = file.read()
-                    print(fileContent)
+                    print(fileContent + "\n")
             except FileNotFoundError:
                 print("File not found :(")
 
-    if (playerChoice == 1):
-        print("\n\nLet's begin!")
+        if (playerChoice == 1):
+            continueGames = 0
+            while (continueGames != 2):
+                ref.resetGame(player1, player2)
 
-        round = 0
-        while (ref.checkRoundWins(player1, player2) != 1):
-            round += 1
-            print("\n\nRound " + str(round) + "\n")
-            
-            executeRound(player1, player2, ref)
+                print("\n\nLet's begin!")
 
-            if (ref.checkRoundWins(player1, player2) == 1):
-                break
+                round = 0
+                while (ref.checkRoundWins(player1, player2) != 1):
+                    round += 1
+                    print("\n\nRound " + str(round) + "\n")
+                    
+                    executeRound(player1, player2, ref)
 
-            print(player1.name + "'s wins: " + str(player1.roundWins))
-            print(player2.name + "'s wins: " + str(player2.roundWins))
+                    if (ref.checkRoundWins(player1, player2) == 1):
+                        print("\nFinal Score: ")
+                        print(player1.name + ": " + str(player1.roundWins))
+                        print(player2.name + ": " + str(player2.roundWins) + "\n")
 
-            input("\nPress ENTER to continue")
+                        continueGames = int(input("Play another game?\n1: Yes\n2: No\n"))
+
+                        break
+
+                    print("\nScore: ")
+                    print(player1.name + ": " + str(player1.roundWins))
+                    print(player2.name + ": " + str(player2.roundWins))
+
+                    input("\nPress ENTER to continue")
 
 def executeRound(player1, player2, referee):
         referee.roundEnd = 0
         while referee.roundEnd != 1:
+            # Determine who will have advantage this round
+            print("Who will have the advantage...")
+            print("Rolling die...\n")
+            referee.determinePlayerAdvantage(player1, player2)
+            if (player1.advantage == 1):
+                print(player1.name + " has the advantage this round!\n")
+            else:
+                print(player2.name + " has the advantage this round!\n")
+
             # Players roll dice
-            print("Rolling dice...")
+            print("Rolling dice...\n")
             player1.rollDice()
             player2.rollDice()
 
@@ -66,6 +86,7 @@ def executeRound(player1, player2, referee):
             print(player2.name + "'s dice: [" + str(player2.die1) + "] " + "[" + str(player2.die2) + "]")
             print("Sum: " + str(sum(player2.dice)))
 
+            # If there is a tie or zeroten, reroll
             if (referee.checkDice(player1, player2) == 1):
                 print("\nRerolling dice...")
                 input("\nPress ENTER to continue\n")

@@ -6,11 +6,11 @@ Jamie's Dice Game Rules:
 
 3. Each dice will have faces 0, 1, 2, 3, 4, 5, 6, and 10
 
-4. If a player rolls a 0, it is an automatic lose for that round
+4. If a player rolls a 0, it is an automatic win for that round
 
 5. If a player rolls two 0's, it is an automatic game over and the opponent wins
 
-6. If a player rolls a 10, it is an automatic win for that round
+6. If a player rolls a 10, it is an automatic lose for that round
 
 7. If a player rolls two 10's, it is an automatic win overall and the opponent loses
 
