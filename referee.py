@@ -8,7 +8,7 @@ import random
 
 class Referee:
     def __init__(self):
-        self.name = "Rule Enforcer :)"
+        self.name = "Game Master - Rule Enforcer :)"
         self.roundEnd = 0
 
     # integration between referee and die
@@ -18,25 +18,23 @@ class Referee:
         # roll 1 dice
         return random.choices(die.faces, weights=die.probabilities)
 
-    # integration between referee and player
-    def determinePlayerAdvantage(self, player1, player2):
-        player1.advantage = 0
-        player2.advantage = 0
+    def setPlayerAdvantage(self):
+        player1Advantage = self.rollAdvantageDie()
+        player2Advantage = self.rollAdvantageDie()
 
-        player1Advantage = player1.advantage
-        player2Advantage = player2.advantage
-
-        while (player1Advantage == player2Advantage):
-            player1Advantage = self.rollAdvantageDie()
-            player2Advantage = self.rollAdvantageDie()
-
-            if (player1Advantage > player2Advantage):
-                player1.advantage = 1
-                break
-            else:
-                if (player1Advantage < player2Advantage):
-                    player2.advantage = 1
-                    break
+        if (player1Advantage == player2Advantage):
+            return [0, 0]
+        else:
+            return [player1Advantage, player2Advantage]
+        
+    # 
+    def determinePlayerAdvantage(self, player1, player1Advantage, player2, player2Advantage):
+        if (player1Advantage > player2Advantage):
+            player1.advantage = 1
+        elif (player1Advantage < player2Advantage):
+                player2.advantage = 1
+        else:
+            return 0
 
     # integration between player and die
     def checkSameSum(self, player1, player2):

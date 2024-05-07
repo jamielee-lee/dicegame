@@ -66,10 +66,20 @@ def main():
 def executeRound(player1, player2, referee):
         referee.roundEnd = 0
         while referee.roundEnd != 1:
+            player1.advantage = 0
+            player2.advantage = 0
+
             # Determine who will have advantage this round
             print("Who will have the advantage...")
             print("Rolling die...\n")
-            referee.determinePlayerAdvantage(player1, player2)
+
+            p1 = 0; p2 = 0
+            while (p1 == p2):
+                p1, p2 = referee.setPlayerAdvantage()
+                print("Advantage die roll for " + player1.name + ": " + str(p1))
+                print("Advantage die roll for " + player2.name + ": " + str(p2))
+                referee.determinePlayerAdvantage(player1, p1, player2, p2)
+
             if (player1.advantage == 1):
                 print(player1.name + " has the advantage this round!\n")
             else:
