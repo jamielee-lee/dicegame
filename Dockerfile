@@ -1,5 +1,5 @@
 FROM python:3
 WORKDIR /dicegame
 COPY . .
-RUN pip install -r requirements.txt
+RUN pip install coverage
 CMD [ "python", "./dicegame.py" ]
