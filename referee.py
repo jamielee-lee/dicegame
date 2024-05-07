@@ -69,13 +69,14 @@ class Referee:
         elif (player2.die1 == 0 and player2.die2 == 0):
             player1.roundWins = 5
             return 1
-        
-        if (player1.die1 == 10 and player1.die2 == 10):
+        elif (player1.die1 == 10 and player1.die2 == 10):
             player1.roundWins = 5
             return 1
         elif (player2.die1 == 10 and player2.die2 == 10):
             player2.roundWins = 5
             return 1
+        else:
+            return 0
         
     def checkZero(self, player1, player2):
         if (0 in player1.dice or 0 in player2.dice):
@@ -121,14 +122,17 @@ class Referee:
 
     # integration between player and die
     def checkDice(self, player1, player2):
-        if (self.checkZeroTen(player1, player2) == 1):
-            return 1
-        elif (self.checkSameSum(player1, player2) == -1):
+        if (self.checkSameSum(player1, player2) == -1):
             self.triggerGameOver(player2)
+            return -1
         elif (self.checkSameSum(player1, player2) == -2):
             self.triggerGameOver(player1)
+            return -2
         elif (self.checkDoubles(player1, player2) == 1):
             self.checkRoundWins(player1, player2)
+            return 2
+        elif (self.checkZeroTen(player1, player2) == 1):
+            return 1
         elif (self.checkZero(player1, player2) == 1 or self.checkTen(player1, player2) == 1):
             return 0
         elif (self.checkSameSum(player1, player2) == 1):
@@ -145,13 +149,16 @@ class Referee:
         if (player1.roundWins == 5):
             self.triggerGameOver(player1)
             return 1
-        
-        if (player2.roundWins == 5):
+        elif (player2.roundWins == 5):
             self.triggerGameOver(player2)
-            return 1
+            return 2
+        else:
+            return 0
 
     def triggerGameOver(self, player):
         print("\n\n" + player.name + " has won! yippee")
+
+        return player.name
 
     def resetPlayer(self, player):
         player.dice = []

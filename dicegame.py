@@ -48,7 +48,7 @@ def main():
                     
                     executeRound(player1, player2, ref)
 
-                    if (ref.checkRoundWins(player1, player2) == 1):
+                    if (ref.checkRoundWins(player1, player2) == 1 or ref.checkRoundWins(player1, player2) == 2):
                         print("\nFinal Score: ")
                         print(player1.name + ": " + str(player1.roundWins))
                         print(player2.name + ": " + str(player2.roundWins) + "\n")
