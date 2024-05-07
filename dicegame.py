@@ -1,0 +1,1 @@
+hi = int(input("Continue?\n1: Yes\n2: No\n"))

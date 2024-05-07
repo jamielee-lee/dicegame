@@ -1,0 +1,20 @@
+Jamie's Dice Game Rules:
+-------------------------------------------------------------------------------------------------------------------------------------------------
+1. There will be 2 players
+
+2. During the game, each player rolls 2 dice. Whichever player has the highest sum wins the round
+
+3. Each dice will have faces 0, 1, 2, 3, 4, 5, 6, and 10
+
+4. If a player rolls a 0, it is an automatic lose for that round
+
+5. If a player rolls two 0's, it is an automatic game over and the opponent wins
+
+6. If a player rolls a 10, it is an automatic win for that round
+
+7. If a player rolls two 10's, it is an automatic win overall and the opponent loses
+
+8. Before each round, one dice is rolled by the referee for each player to determine who would have the advantage in the situations above if a tie were to occur.
+   The player with the higher roll gets the advantage
+
+9. 5 rounds must be won to win a game
