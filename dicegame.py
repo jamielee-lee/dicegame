@@ -25,15 +25,17 @@ def main():
     while (playerChoice != 3):
         playerChoice = int(input("1: Start Game\n2: Rules\n3: Quit\n"))
 
+        # Display rules to players
         if (playerChoice == 2):
             filePath = 'rules.txt'
             try:
                 with open(filePath, 'r') as file:
                     fileContent = file.read()
-                    print(fileContent + "\n")
+                    print("\n" + fileContent + "\n")
             except FileNotFoundError:
                 print("File not found :(")
 
+        # Start game
         if (playerChoice == 1):
             continueGames = 0
             while (continueGames != 2):
@@ -42,9 +44,9 @@ def main():
                 print("\n\nLet's begin!")
 
                 round = 0
-                while (ref.checkRoundWins(player1, player2) != 1):
+                while (ref.checkRoundWins(player1, player2) == 0):
                     round += 1
-                    print("\n\nRound " + str(round) + "\n")
+                    print("\n\ROUND " + str(round) + "\n")
                     
                     executeRound(player1, player2, ref)
 
@@ -76,8 +78,14 @@ def executeRound(player1, player2, referee):
             p1 = 0; p2 = 0
             while (p1 == p2):
                 p1, p2 = referee.setPlayerAdvantage()
+                
+                # reroll if same
+                if (p1 == p2):
+                    continue
+
                 print("Advantage die roll for " + player1.name + ": " + str(p1))
-                print("Advantage die roll for " + player2.name + ": " + str(p2))
+                print("Advantage die roll for " + player2.name + ": " + str(p2) + "\n")
+
                 referee.determinePlayerAdvantage(player1, p1, player2, p2)
 
             if (player1.advantage == 1):

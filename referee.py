@@ -27,7 +27,7 @@ class Referee:
         else:
             return [player1Advantage, player2Advantage]
         
-    # 
+    # integration between referee and player
     def determinePlayerAdvantage(self, player1, player1Advantage, player2, player2Advantage):
         if (player1Advantage > player2Advantage):
             player1.advantage = 1
@@ -61,7 +61,8 @@ class Referee:
         else:
             # players did not have the same sum
             return 0
-        
+    
+    # integration between player and die
     def checkDoubles(self, player1, player2):
         if (player1.die1 == 0 and player1.die2 == 0):
             player2.roundWins = 5
@@ -77,7 +78,8 @@ class Referee:
             return 1
         else:
             return 0
-        
+    
+    # integration between player and die
     def checkZero(self, player1, player2):
         if (0 in player1.dice or 0 in player2.dice):
             if (player1.advantage == 1):
@@ -95,6 +97,7 @@ class Referee:
         else:
             return 0
 
+    # integration between player and die
     def checkTen(self, player1, player2):
         if (10 in player1.dice or 10 in player2.dice):
             if (player1.advantage == 1):
@@ -112,6 +115,7 @@ class Referee:
         else:
             return 0
 
+    # integration between player and die
     def checkZeroTen(self, player1, player2):
         if (10 in player1.dice and 0 in player1.dice):
             return 1
@@ -144,7 +148,7 @@ class Referee:
             # player 2 wins the round
             player2.roundWins += 1
 
-
+    # integration between player and referee
     def checkRoundWins(self, player1, player2):
         if (player1.roundWins == 5):
             self.triggerGameOver(player1)
@@ -155,11 +159,13 @@ class Referee:
         else:
             return 0
 
+    # integration between player and referee
     def triggerGameOver(self, player):
         print("\n\n" + player.name + " has won! yippee")
 
         return player.name
 
+    # integration between player and referee
     def resetPlayer(self, player):
         player.dice = []
         player.roundWins = 0
@@ -167,6 +173,7 @@ class Referee:
     def resetReferee(self):
         self.roundEnd = 0
 
+    # integration between player and referee
     def resetGame(self, player1, player2):
         self.resetPlayer(player1)
         self.resetPlayer(player2)

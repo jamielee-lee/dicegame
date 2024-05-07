@@ -14,7 +14,9 @@ Jamie's Dice Game Rules:
 
 7. If a player rolls two 10's, it is an automatic win overall and the opponent loses
 
-8. Before each round, one dice is rolled by the referee for each player to determine who would have the advantage in the situations above if a tie were to occur.
+8. Before each round, one die is rolled by the referee for each player to determine who would have the advantage in the situations above if a tie were to occur.
    The player with the higher roll gets the advantage
 
-9. 5 rounds must be won to win a game
+9. If either player rolls both a 10 and 0, the dice are rerolled
+
+10. 5 rounds must be won to win a game

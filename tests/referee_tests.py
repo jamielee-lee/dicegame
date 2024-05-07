@@ -180,7 +180,7 @@ class TestPlayerMethods(unittest.TestCase):
 
         # if p1 and p2 roll one zero and p2 has advantage, p2 wins the round
         p1.advantage = 0
-        p2. advantage = 1
+        p2.advantage = 1
         p1.roundWins = 0 # reset from last assertion
         p2.roundWins = 0 # reset from last assertion
 
@@ -188,62 +188,62 @@ class TestPlayerMethods(unittest.TestCase):
         self.assertEqual(p2.roundWins, 1)
 
     def test_checkTen(self):
-            ref = Referee()
-            p1 = Player("Player1")
-            p2 = Player("Player2")
+        ref = Referee()
+        p1 = Player("Player1")
+        p2 = Player("Player2")
 
-            # if no players rolled one ten
-            p1.dice = [1, 1]
-            p2.dice = [1, 2]
-            p1.die1, p1.die2 = 1, 1
-            p2.die1, p2.die2 = 1, 2
+        # if no players rolled one ten
+        p1.dice = [1, 1]
+        p2.dice = [1, 2]
+        p1.die1, p1.die2 = 1, 1
+        p2.die1, p2.die2 = 1, 2
 
-            self.assertEqual(ref.checkTen(p1, p2), 0)
+        self.assertEqual(ref.checkTen(p1, p2), 0)
 
-            # if one or both players roll one ten
-            p1.dice = [10, 1]
-            p2.dice = [1, 2]
-            p1.die1, p1.die2 = 10, 1
-            p2.die1, p2.die2 = 1, 2
+        # if one or both players roll one ten
+        p1.dice = [10, 1]
+        p2.dice = [1, 2]
+        p1.die1, p1.die2 = 10, 1
+        p2.die1, p2.die2 = 1, 2
 
-            self.assertEqual(ref.checkTen(p1, p2), 1)
+        self.assertEqual(ref.checkTen(p1, p2), 1)
 
-            # if only p1 rolls one ten, p1 loses the round
-            p2.roundWins = 0 # reset from last assertion
+        # if only p1 rolls one ten, p1 loses the round
+        p2.roundWins = 0 # reset from last assertion
 
-            ref.checkTen(p1, p2)
-            self.assertEqual(p2.roundWins, 1)
+        ref.checkTen(p1, p2)
+        self.assertEqual(p2.roundWins, 1)
 
-            # if only p2 rolls one ten, p2 loses the round
-            p2.dice = [10, 1]
-            p1.dice = [1, 2]
-            p2.die1, p2.die2 = 10, 1
-            p1.die1, p1.die2 = 1, 2
+        # if only p2 rolls one ten, p2 loses the round
+        p2.dice = [10, 1]
+        p1.dice = [1, 2]
+        p2.die1, p2.die2 = 10, 1
+        p1.die1, p1.die2 = 1, 2
 
-            ref.checkTen(p1, p2)
-            self.assertEqual(p1.roundWins, 1)
+        ref.checkTen(p1, p2)
+        self.assertEqual(p1.roundWins, 1)
 
-            # if p1 and p2 roll one ten and p1 has advantage, p1 wins the round
-            p1.advantage = 1
-            p2. advantage = 0
-            p1.dice = [10, 1]
-            p2.dice = [1, 10]
-            p1.die1, p1.die2 = 10, 1
-            p2.die1, p2.die2 = 1, 10
-            p1.roundWins = 0 # reset from last assertion
-            p2.roundWins = 0 # reset from last assertion
+        # if p1 and p2 roll one ten and p1 has advantage, p1 wins the round
+        p1.advantage = 1
+        p2. advantage = 0
+        p1.dice = [10, 1]
+        p2.dice = [1, 10]
+        p1.die1, p1.die2 = 10, 1
+        p2.die1, p2.die2 = 1, 10
+        p1.roundWins = 0 # reset from last assertion
+        p2.roundWins = 0 # reset from last assertion
 
-            ref.checkTen(p1, p2)
-            self.assertEqual(p1.roundWins, 1)
+        ref.checkTen(p1, p2)
+        self.assertEqual(p1.roundWins, 1)
 
-            # if p1 and p2 roll one ten and p2 has advantage, p2 wins the round
-            p1.advantage = 0
-            p2. advantage = 1
-            p1.roundWins = 0 # reset from last assertion
-            p2.roundWins = 0 # reset from last assertion
+        # if p1 and p2 roll one ten and p2 has advantage, p2 wins the round
+        p1.advantage = 0
+        p2. advantage = 1
+        p1.roundWins = 0 # reset from last assertion
+        p2.roundWins = 0 # reset from last assertion
 
-            ref.checkTen(p1, p2)
-            self.assertEqual(p2.roundWins, 1)
+        ref.checkTen(p1, p2)
+        self.assertEqual(p2.roundWins, 1)
 
     def test_checkZeroTen(self):
         ref = Referee()
