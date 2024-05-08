@@ -11,13 +11,14 @@ class Referee:
         self.name = "Game Master - Rule Enforcer :)"
         self.roundEnd = 0
 
-    # integration between referee and die
+    # interaction between referee and die
     def rollAdvantageDie(self):
         die = Die()
 
         # roll 1 dice
         return random.choices(die.faces, weights=die.probabilities)
 
+    # integration test (1)
     def setPlayerAdvantage(self):
         player1Advantage = self.rollAdvantageDie()
         player2Advantage = self.rollAdvantageDie()
@@ -27,7 +28,7 @@ class Referee:
         else:
             return [player1Advantage, player2Advantage]
         
-    # integration between referee and player
+    # interaction between referee and player - referee is changing values of player
     def determinePlayerAdvantage(self, player1, player1Advantage, player2, player2Advantage):
         if (player1Advantage > player2Advantage):
             player1.advantage = 1
@@ -36,7 +37,7 @@ class Referee:
         else:
             return 0
 
-    # integration between player and die
+    # interaction between player and die
     def checkSameSum(self, player1, player2):
         if (sum(player1.dice) == sum(player2.dice)):
             # if both player rolled two 0's
@@ -62,7 +63,7 @@ class Referee:
             # players did not have the same sum
             return 0
     
-    # integration between player and die
+    # interaction between player and die
     def checkDoubles(self, player1, player2):
         if (player1.die1 == 0 and player1.die2 == 0):
             player2.roundWins = 5
@@ -79,7 +80,7 @@ class Referee:
         else:
             return 0
     
-    # integration between player and die
+    # interaction between player and die
     def checkZero(self, player1, player2):
         if (0 in player1.dice or 0 in player2.dice):
             if (player1.advantage == 1):
@@ -97,7 +98,7 @@ class Referee:
         else:
             return 0
 
-    # integration between player and die
+    # interaction between player and die
     def checkTen(self, player1, player2):
         if (10 in player1.dice or 10 in player2.dice):
             if (player1.advantage == 1):
@@ -115,7 +116,7 @@ class Referee:
         else:
             return 0
 
-    # integration between player and die
+    # interaction between player and die
     def checkZeroTen(self, player1, player2):
         if (10 in player1.dice and 0 in player1.dice):
             return 1
@@ -124,7 +125,8 @@ class Referee:
         else:
             return 0
 
-    # integration between player and die
+    # integration test (2)
+    # interaction between player and die
     def checkDice(self, player1, player2):
         if (self.checkSameSum(player1, player2) == -1):
             self.triggerGameOver(player2)
@@ -148,7 +150,8 @@ class Referee:
             # player 2 wins the round
             player2.roundWins += 1
 
-    # integration between player and referee
+    # integration test (3)
+    # interaction between player and referee
     def checkRoundWins(self, player1, player2):
         if (player1.roundWins == 5):
             self.triggerGameOver(player1)
@@ -159,13 +162,13 @@ class Referee:
         else:
             return 0
 
-    # integration between player and referee
+    # interaction between player and referee
     def triggerGameOver(self, player):
         print("\n\n" + player.name + " has won! yippee")
 
         return player.name
 
-    # integration between player and referee
+    # interaction between player and referee
     def resetPlayer(self, player):
         player.dice = []
         player.roundWins = 0
@@ -173,7 +176,8 @@ class Referee:
     def resetReferee(self):
         self.roundEnd = 0
 
-    # integration between player and referee
+    # integration test (4)
+    # interaction between player and referee
     def resetGame(self, player1, player2):
         self.resetPlayer(player1)
         self.resetPlayer(player2)
