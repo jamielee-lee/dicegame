@@ -11,11 +11,11 @@ def main():
     print("DICE GAME\n")
     print("----------------------------\n\n")
 
-    name1 = input("Player 1, what is your name?\n")
-    player1 = Player(name1)
-
     name2 = input("Player 2, what is your name?\n")
     player2 = Player(name2)
+
+    name1 = input("Player 1, what is your name?\n")
+    player1 = Player(name1)
 
     print("\nWelcome to the table! :)\n")
     ref = Referee()
