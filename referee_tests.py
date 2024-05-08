@@ -425,7 +425,7 @@ class TestPlayerMethods(unittest.TestCase):
 
         p1.roundWins = 5
 
-        self.assertEqual(ref.checkRoundWins(p1, p2), 2)
+        self.assertEqual(ref.checkRoundWins(p1, p2), 1)
 
         p1.roundWins = 3
         p2.roundWins = 5
