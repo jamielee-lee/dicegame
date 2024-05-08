@@ -1,2 +1,2 @@
-# dice game
+# DICE GAME
  CS333 Final Project
